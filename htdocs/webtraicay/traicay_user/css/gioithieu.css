@@ -1,0 +1,226 @@
+@charset "utf-8";
+.logo{
+  padding-top: 10px;
+}
+.logo ul li a{font-family: monospace; font-size: 16px; color:gray; font-weight: bold;}
+.logo ul li span{font-family: monospace; font-size: 16px; color:gray; font-weight: bold;}
+.logo ul li:hover a{color:#5cbb47; font-weight: bold;}
+.logo ul li{padding:5px 10px;}
+
+.menutr1{}
+.menutr1 ul li a{font-family: monospace; font-size: 16px; color:gray; font-weight: bold; }
+.menutr1 ul li span{font-family: monospace; font-size: 16px; color:gray; font-weight: bold;}
+.menutr1 ul li:hover a{color:#5cbb47; font-weight: bold;}
+.menutr1 ul li{padding:5px 10px;}
+
+@media screen and (max-width:1600px) {
+  .menutr1{display: none;}
+  .logo{display: block;}
+}
+@media screen and (max-width:1000px) {
+  .menutr1{display: none;}
+  .logo{display: block;}
+}
+@media screen and (max-width:768px) {
+  .menutr1{display:block;}
+  .logo{display: none;}
+  .lg{display: none;}
+  
+}
+@media screen and (max-width:576px) {
+  .menutr1{ display: block;}
+  .logo{display: none;}
+  .lg{display: none;}
+} 
+
+/*    */
+.bg{
+    margin-top: 10px;
+    background-color: #5cbb47;
+    height: 25px;
+  }
+.bgchu{
+    margin-left: 16px ;
+    font-family: monospace;
+    opacity: 0.6;
+}
+.bgchu2{
+    text-decoration: none;
+    color: #111111;
+}
+.bgchu2:hover{
+  text-decoration: none;
+  color: gray;
+}
+
+.big{
+    margin-top: 22px;
+    padding-top: 13px;
+    width: 40px;
+    height: 40px;
+    background: #80bb35;
+    color: #fff;
+    float: left;
+    text-align: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.text1{
+   padding-top: 20px;
+   padding-left: 10px;
+   margin-bottom: 0px;
+   font-weight: bold;
+}
+.text2{
+   margin-left: 50px;
+}
+.text3{
+  margin: 0px 0px 0px 50px;
+  color: #d81226;
+}
+
+/* */
+.mgt{
+    margin-top: 40px;
+}
+.chu7{
+    font-family: monospace;
+    margin-left: 20px;
+}
+.chu3{
+  font-family: monospace;
+  line-height: 20px;
+}
+/*  */
+.button1{
+  width: 100px;
+  height: 50px;
+  margin-top: 10px;
+  background-color: #5cbb47;
+  border-radius: 8%;
+  border: 1px solid #5cbb47;
+}
+.redchu{
+  color: white;
+}
+.button1:hover{
+  border-color:#5cbb47;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* */
+.map1{
+  margin-top: 20px;
+}
+
+
+
+
+/* */
+.bg1{
+  background-color: #edecec; 
+  height: 300px;
+}
+.bg2{
+  margin-top: 150px;
+}
+.chu1{
+  padding-top: 50px;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 20px;
+}
+.chuend{
+  font-family: monospace;
+  line-height: 20px;
+}
+.left{
+  float: left;
+  padding-left: 45px;
+}
+.left1{
+  float: left;
+  padding-right: 20px;
+  font-size: 20px;
+}
+
+/*icon fixed*/
+.icon-bar {
+  position: fixed;
+  top: 80%;
+  left: 96.5%;
+  border: 2px solid;
+  border-radius: 5px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color:#edecec;
+  font-size: 10px;
+}
+.icon-bar a:hover {
+  background-color: #edecec;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.insta {
+  background: #a70f1e;
+  color: white;
+}
+/*backgruopcuoi2*/
+.mau{
+  color: red;
+}
+.den{
+  color: #111111;
+}
+.visa{
+  color: #111111;
+}
+.visa:hover{
+  color:gray;
+}
+.den:hover{
+  color:gray;
+}
+.mau:hover{
+  color:gray;
+}
+.bgft{
+  text-decoration: none;
+  color: #111111;
+}
+.bgft:hover{
+  color: gray;
+}
+
+#backtop{
+    width:50px;
+    height:50px;
+    background:rgb(33, 116, 14);
+    color:#fff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30%;
+    position:fixed;
+    bottom:40px;
+    right:20px;
+    cursor:pointer;
+}
+
+.gach{
+  text-decoration: none;
+}
+.gach:hover{
+  text-decoration: none;
+}

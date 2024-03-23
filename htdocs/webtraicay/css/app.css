@@ -1,0 +1,176 @@
+@charset "utf-8";
+.logo{margin: 10px 0px 0px 0px ;float:left;margin-bottom: 10px;}
+.menu nav ul li a{font-family: monospace;font-size:20px;color:#0e1012 ;;font-weight:bold;float:right;text-decoration: none;}
+.menu nav ul li { padding:5px 15px;}
+ul li:hover a{border-bottom: 4px solid rgb(224, 19, 87);}
+.a {
+    font-family: monospace;
+    text-decoration: none;
+    font-weight: bold;
+    color:#0e1012;
+    font-size:16px;
+}
+.a1 {
+    font-family: monospace;
+    text-decoration: none;
+    font-weight: bold;
+    color:white;
+}
+.a1:hover{
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    color:white;
+}
+.a2 {
+    font-family: monospace;
+    text-decoration: none;
+    font-weight: bold;
+    color:white;
+    margin-top: 15px;
+}
+.a2:hover{
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    color:white;
+}
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #999;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url(../imageda/searchicon.png);
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin-top: 10px;
+  }
+  
+  /* When the input field gets focus, change its width to 100% */
+  input[type=text]:focus {
+    width: 100%;
+  }
+@media screen and (max-width:1600px) {
+    .menu1{display: none;}
+    .menu{display: block;}
+ }
+ @media screen and (max-width:1000px) {
+    .menu1{display: none;}
+    .menu{display: block;}
+ }
+ @media screen and (max-width:768px) {
+    .menu1{display:block;}
+    .menu{display: none;}
+    
+}
+@media screen and (max-width:576px) {
+    .menu1{ display: block;}
+    .menu{display: none;}
+   
+} 
+.bg{
+    background-color: black;
+    height: 400px;
+}
+.bg4{
+    padding-top:10px;
+    color: white;
+    font-size: 30px;
+    padding-left:40px;
+}
+.bg1{
+    line-height: 5px;
+    color: white;
+    font-size: 20px;
+    padding-top: 60px;
+    padding-left:40px;
+}
+.bg2{
+    color: #999;
+    padding-left: 40px;    
+}
+.bg3{
+    padding-left:40px;
+    line-height: 5px;
+    color: white;
+    font-size: 20px;
+}
+.h4{
+    color:white;
+    padding-left: 40px; 
+}
+.icon-bar {
+    width: 100%;
+    overflow: auto;
+  }
+  
+  .icon-bar a {
+    float: left;
+    width: 10%;
+    text-align: center;
+    padding-top:10px;
+    padding-left: 40px;
+    color: #999;
+    font-size: 20px;
+  }
+.gt1{
+    text-align: center;
+    padding-top:10px;
+    font-size: 20px;
+    font-family:monospace;
+    font-weight: bold;
+}
+.gt2{
+    padding-top:30px;
+    font-size: 20px;
+    font-family:monospace;
+}
+.gt{
+    font-size: 40px;
+    font-family:monospace;
+    font-weight: bold;
+    text-align: center;
+}
+.m20{
+    margin: top 20px; ;
+    object-fit:cover;
+}
+.t1{
+    width:100%;
+    background-color: #e1e0e0;
+    height: 30px;
+}
+.chu1{
+    margin-left: 20px;
+    font-family: monospace;
+}
+.chu2{
+    margin-bottom: 20px;
+}
+.chu3{
+    margin-top: 70px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin-right: 70px;
+}
+.chu4{
+    margin-top:70px;
+}
+#backtop{
+    width:50px;
+    height:50px;
+    background:tomato;
+    color:#fff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position:fixed;
+    bottom:40px;
+    right:20px;
+    cursor:pointer;
+}
