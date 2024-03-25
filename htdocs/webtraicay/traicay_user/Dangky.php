@@ -1,6 +1,4 @@
 <?php 
-
-
 require 'server.php';
 
 if (isset($_POST["btnluu"])) {
@@ -11,19 +9,31 @@ if (isset($_POST["btnluu"])) {
     $password = $_POST["password"];
     $role_id = 1; // Giả sử role_id mặc định là 1
 
-    // Thực hiện truy vấn để tìm ID lớn nhất trong bảng users
-    $query_max_id = "SELECT MAX(id) AS max_id FROM users";
-    $result_max_id = mysqli_query($conn, $query_max_id);
-    $row_max_id = mysqli_fetch_assoc($result_max_id);
-    $new_user_id = intval($row_max_id["max_id"]) + 1;
+    // Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
+    $query_check_email = "SELECT COUNT(*) AS email_count FROM users WHERE email = '$email'";
+    $result_check_email = mysqli_query($conn, $query_check_email);
+    $row_check_email = mysqli_fetch_assoc($result_check_email);
+    $email_count = intval($row_check_email["email_count"]);
 
-    // Thực hiện truy vấn INSERT vào bảng users
-    $query_insert = "INSERT INTO users (id, fullname, email, phone_number, address, password, role_id)
-                     VALUES ('$new_user_id', '$fullname', '$email', '$phone_number', '$address', '$password', '$role_id')";
-    if (mysqli_query($conn, $query_insert)) {
-        echo "Thêm người dùng mới thành công! ID mới: $new_user_id";
+    if ($email_count > 0) {
+        // Nếu email đã tồn tại, thông báo cho người dùng và dừng việc thực hiện
+        echo "<script>alert('Email đã tồn tại trong hệ thống. Vui lòng sử dụng email khác.');</script>";
     } else {
-        echo "Thêm người dùng mới không thành công!";
+        // Nếu email không tồn tại, thực hiện truy vấn INSERT vào bảng users
+        // Thực hiện truy vấn để tìm ID lớn nhất trong bảng users
+        $query_max_id = "SELECT MAX(id) AS max_id FROM users";
+        $result_max_id = mysqli_query($conn, $query_max_id);
+        $row_max_id = mysqli_fetch_assoc($result_max_id);
+        $new_user_id = intval($row_max_id["max_id"]) + 1;
+
+        // Thực hiện truy vấn INSERT vào bảng users
+        $query_insert = "INSERT INTO users (id, fullname, email, phone_number, address, password, role_id)
+                         VALUES ('$new_user_id', '$fullname', '$email', '$phone_number', '$address', '$password', '$role_id')";
+        if (mysqli_query($conn, $query_insert)) {
+            echo "<script>alert('Thêm người dùng mới thành công! ID mới: $new_user_id'); window.location='login.php';</script>";
+        } else {
+            echo "<script>alert('Thêm người dùng mới không thành công!');</script>";
+        }
     }
 }
 ?>

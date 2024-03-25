@@ -75,29 +75,25 @@ $user = (isset ($_SESSION['user'])) ? $_SESSION['user'] : [];
             </li>
 
             <div class="nav-item dropdown back3">
-              <?php if (isset ($user['email'])) { ?>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                    <?php echo $user['email'] ?>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <!-- <li><a class="dropdown-item" href="Dangky.php">Đăng ký</a></li>
-                        <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li> -->
-                    <li><a class="dropdown-item" href="tttaikhoan.php">Thông tin</a></li>
-                    <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
-                  </ul>
-                </li>
-
-              <?php } else { ?>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TÀI KHOẢN</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="Dangky.php">Đăng ký</a></li>
-                    <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li>
-                    <!-- <li><a class="dropdown-item" href="#">Đăng xuất</a></li> -->
-                  </ul>
-                </li>
-              <?php } ?>
+            <?php if (isset($_SESSION['fullname'])) { ?>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+        <?php echo $_SESSION['fullname']; ?>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="tttaikhoan.php">Thông tin</a></li>
+        <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
+      </ul>
+    </li>
+  <?php } else { ?>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TÀI KHOẢN</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="Dangky.php">Đăng ký</a></li>
+        <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li>
+      </ul>
+    </li>
+  <?php } ?>
             </div>
 
             <li class="nav-item">

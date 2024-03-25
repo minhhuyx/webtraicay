@@ -183,10 +183,7 @@ include 'server.php' ;
                     <p class="title">Đăng nhập</p>
                     <p class="sub-title"></p>
                     <form class="form" action="process_login.php" method="post">
-
                         <input  class="input" type="text" id="username" name="username" placeholder="Tên người dùng">
-
-
                         <input  class="input" type="password" id="password" name="password"  placeholder="Mật khẩu">
 
                         <div class="checkbox-wrapper left3">

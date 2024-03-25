@@ -1,8 +1,6 @@
 <?php
 include 'server.php';
-//  $user = [] ; 
-$user = (isset ($_SESSION['user'])) ? $_SESSION['user'] : [];
-// $user = $_SESSION['user']; 
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +28,40 @@ $user = (isset ($_SESSION['user'])) ? $_SESSION['user'] : [];
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop()) {
+                $('#backtop').fadeIn();
+            }
+            else {
+                $('#backtop').fadeOut();
+            }
+        });
+        $("#backtop").click(function () {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 400);
+        });
+    });
+    function togglePasswordVisibility() {
+  const passwordField = document.getElementById("password-field");
+  const toggleIcon = document.getElementById("toggle-icon");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    toggleIcon.classList.remove("fas", "fa-eye-slash");
+    toggleIcon.classList.add("far", "fa-eye");
+  } else {
+    passwordField.type = "password";
+    toggleIcon.classList.remove("far", "fa-eye");
+    toggleIcon.classList.add("fas", "fa-eye-slash");
+  }
+}
+
+
+</script>
+
 <body>
     <!--header-->
     <div class="container-fluid">
@@ -56,30 +88,24 @@ $user = (isset ($_SESSION['user'])) ? $_SESSION['user'] : [];
                         </li>
 
                         <div class="nav-item dropdown back3">
-                            <?php if (isset ($user['email'])) { ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                        <?php echo $user['email'] ?>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <!-- <li><a class="dropdown-item" href="Dangky.php">Đăng ký</a></li>
-                        <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li> -->
-                                        <li><a class="dropdown-item" href="tttaikhoan.php">Thông tin</a></li>
-                                        <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
-                                    </ul>
-                                </li>
-
-                            <?php } else { ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TÀI
-                                        KHOẢN</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="Dangky.php">Đăng ký</a></li>
-                                        <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li>
-                                        <!-- <li><a class="dropdown-item" href="#">Đăng xuất</a></li> -->
-                                    </ul>
-                                </li>
-                            <?php } ?>
+                        <?php if (isset($_SESSION['fullname'])) { ?>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+        <?php echo $_SESSION['fullname']; ?>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
+      </ul>
+    </li>
+  <?php } else { ?>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TÀI KHOẢN</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="Dangky.php">Đăng ký</a></li>
+        <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li>
+      </ul>
+    </li>
+  <?php } ?>
                         </div>
 
                         <li class="nav-item">
@@ -156,8 +182,113 @@ $user = (isset ($_SESSION['user'])) ? $_SESSION['user'] : [];
                         <?php endif; ?>
 
                         </br>
-                        <p class="chu6"><i class="fa fa-home" aria-hidden="true"></i> Địa chỉ:</p>
-                        <p class="chu6"><i class="fa fa-mobile" aria-hidden="true"></i></i> Số điện thoại:</p>
+                        <?php 
+                        $user_id = $_SESSION['user_id']; // Giả sử bạn sử dụng session để lưu trữ ID của người dùng sau khi họ đăng nhập
+
+                        // Truy vấn để lấy thông tin địa chỉ của người dùng
+                        $sql = "SELECT fullname FROM users WHERE id = $user_id";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            // Hiển thị thông tin địa chỉ
+                            while($row = $result->fetch_assoc()) {
+                                $fullname = $row["fullname"];
+                                ?>
+                                <!-- Hiển thị địa chỉ trong mã HTML -->
+                                <p class="chu6"><i class="fas fa-user"></i> Tên tài khoản: <?php echo $fullname; ?></p>
+                                <?php
+                            }
+                        } else {
+                            echo "Không có thông tin địa chỉ.";
+                        }
+
+
+
+
+                        $user_id = $_SESSION['user_id']; // Giả sử bạn sử dụng session để lưu trữ ID của người dùng sau khi họ đăng nhập
+
+                        // Truy vấn để lấy thông tin địa chỉ của người dùng
+                        $sql = "SELECT address FROM users WHERE id = $user_id";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            // Hiển thị thông tin địa chỉ
+                            while($row = $result->fetch_assoc()) {
+                                $address = $row["address"];
+                                ?>
+                                <!-- Hiển thị địa chỉ trong mã HTML -->
+                                <p class="chu6"><i class="fa fa-home" aria-hidden="true"></i> Địa chỉ: <?php echo $address; ?></p>
+                                <?php
+                            }
+                        } else {
+                            echo "Không có thông tin địa chỉ.";
+                        }
+
+                        $user_id = $_SESSION['user_id']; // Giả sử bạn sử dụng session để lưu trữ ID của người dùng sau khi họ đăng nhập
+
+// Truy vấn để lấy thông tin số điện thoại của người dùng
+$sql = "SELECT phone_number FROM users WHERE id = $user_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Hiển thị thông tin số điện thoại
+    while($row = $result->fetch_assoc()) {
+        $phone_number = $row["phone_number"];
+        ?>
+        <!-- Hiển thị số điện thoại trong mã HTML -->
+        <p class="chu6"><i class="fa fa-mobile" aria-hidden="true"></i> Số điện thoại: <?php echo $phone_number; ?></p>
+        <?php
+    }
+} else {
+    echo "Không có thông tin số điện thoại.";
+}
+
+$user_id = $_SESSION['user_id']; // Giả sử bạn sử dụng session để lưu trữ ID của người dùng sau khi họ đăng nhập
+
+// Truy vấn để lấy thông tin email của người dùng
+$sql = "SELECT email FROM users WHERE id = $user_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Hiển thị thông tin email
+    while($row = $result->fetch_assoc()) {
+        $email = $row["email"];
+        ?>
+        <!-- Hiển thị email trong mã HTML -->
+        <p class="chu6"><i class="fa fa-envelope" aria-hidden="true"></i> Email: <?php echo $email; ?></p>
+        <?php
+    }
+} else {
+    echo "Không có thông tin email.";
+}
+
+$sql = "SELECT password FROM users WHERE id = $user_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Hiển thị thông tin mật khẩu
+    while($row = $result->fetch_assoc()) {
+        $password = $row["password"];
+        ?>
+        <!-- Hiển thị mật khẩu trong mã HTML -->
+        <p class="chu6">
+        <span id="password-container">
+  <input type="password" id="password-field"  value="<?php echo $password; ?>" >
+  <i class="fas fa-eye-slash" id="toggle-icon" onclick="togglePasswordVisibility()"></i>
+</span>
+</p>
+        <?php
+    }
+} else {
+    echo "Không có thông tin mật khẩu.";
+}
+
+
+
+
+
+                        ?>
+                        
 
 
                     </div>
@@ -243,22 +374,6 @@ $user = (isset ($_SESSION['user'])) ? $_SESSION['user'] : [];
         <i class="fas fa-chevron-up"></i>
     </div>
 </body>
-<script>
-    $(document).ready(function () {
-        $(window).scroll(function () {
-            if ($(this).scrollTop()) {
-                $('#backtop').fadeIn();
-            }
-            else {
-                $('#backtop').fadeOut();
-            }
-        });
-        $("#backtop").click(function () {
-            $('html,body').animate({
-                scrollTop: 0
-            }, 400);
-        });
-    });
-</script>
+
 
 </html>
